@@ -1,12 +1,13 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import ErrorMessage from "../../components/ErrorMessage";
 import Loading from "../../components/Loading";
-import PokemonContext from "../../context/pokemons";
+import usePokemonsStore from "../../zustand/stores/pokemon";
 import PokemonList from "./components/PokemonList";
+import shallow from "zustand/shallow";
 
 export default function Home() {
   const { getPokemons, pokemons, isLoading, hasError, errorMessage } =
-    useContext(PokemonContext);
+    usePokemonsStore((state) => state, shallow);
   useEffect(() => {
     getPokemons().catch(null);
   }, []);

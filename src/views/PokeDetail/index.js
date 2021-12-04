@@ -1,13 +1,15 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router";
 import Loading from "../../components/Loading";
-import PokemonContext from "../../context/pokemons";
+import ErrorMessage from "../../components/ErrorMessage";
+
 import PokeStats from "./components/PokeStats";
+import usePokemonsStore from "../../zustand/stores/pokemon";
 
 export default function PokeDetail() {
   const { id } = useParams();
   const { pokemonDetail, getPokemonDetail, isLoading, hasError, errorMessage } =
-    useContext(PokemonContext);
+  usePokemonsStore(state => state);
   useEffect(() => {
     getPokemonDetail(id).catch(null);
   }, []);
