@@ -1,4 +1,4 @@
-# Pkedex App
+# Pokedex App
 
 The idea comes from the course of "React desde 0 " by Juan Ortiz, where applies the knowledge earned there.
 
