@@ -1,12 +1,14 @@
 import { Link } from "react-router-dom";
+import { getPokemonIdFromUrl } from '../../../utils'
 
-export default function PokemonListItem({ name, url }) {
-  const getId = (url) => url.split("/")[6]
+export default function PokemonListItem({ pokemon: { name, url}, onSelect }) {
+  const id = getPokemonIdFromUrl(url)
     return (
     <>
       <p>{name}</p>
+      <button onClick={() => onSelect(id)}>Select Pokemon</button>
       <button>
-        <Link to={`/pokemon/${getId(url)}`}>Ver detalle</Link>
+        <Link to={`/pokemon/${id}`}>Ver detalle</Link>
       </button>
     </>
   );

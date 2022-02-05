@@ -1,0 +1,7 @@
+.preview-container{
+  flex-direction: column;
+}
+
+.preview-image {
+  height: 300px;
+}

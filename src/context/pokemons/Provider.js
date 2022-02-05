@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PokemonContext from ".";
 import apiCall from "../../api";
+import { CacheProxy } from "../../api/CacheProxy";
 
 export default function PokemonProvider({ children }) {
   const [pokemons, setPokemons] = useState([]);
@@ -8,6 +9,7 @@ export default function PokemonProvider({ children }) {
   const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  
 
   const getPokemons = async () => {
     try {
@@ -27,12 +29,11 @@ export default function PokemonProvider({ children }) {
 
   const getPokemonDetail = async (id) => {
     if (!id) return Promise.reject("Id es requerido");
+    const proxy = new CacheProxy();
     try {
       setIsLoading(true);
       anErrorOccurred(false, "");
-      const pokemonDetail = await apiCall({
-        url: `https://pokeapi.co/api/v2/pokemon/${id}`,
-      });
+      const pokemonDetail = await proxy.getPokemon(id, apiCall, `https://pokeapi.co/api/v2/pokemon/${id}`)
       setPokemonDetail(pokemonDetail);
     } catch (err) {
       setPokemonDetail({});

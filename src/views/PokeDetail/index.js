@@ -3,7 +3,7 @@ import { useParams } from "react-router";
 import Loading from "../../components/Loading";
 import PokemonContext from "../../context/pokemons";
 import PokeStats from "./components/PokeStats";
-
+import ErrorMessage from '../../components/ErrorMessage'
 export default function PokeDetail() {
   const { id } = useParams();
   const { pokemonDetail, getPokemonDetail, isLoading, hasError, errorMessage } =
