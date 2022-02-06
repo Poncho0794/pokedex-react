@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PokemonListItem from "./PokemonListItem";
 import { getPokemonIdFromUrl } from "../../../../utils";
 import "./style.css";
