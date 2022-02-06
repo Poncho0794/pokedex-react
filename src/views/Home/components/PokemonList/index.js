@@ -5,7 +5,6 @@ import "./style.css";
 
 export default function PokemonList({ pokemons, onPokemonSelect }) {
   const [pokemonSelected, setPokemonSelected] = useState("");
-  const [stopScrolling, setStopScrolling] = useState(false);
   const handleOnSelect = (id, name) => {
     setPokemonSelected(name);
     onPokemonSelect(id);
