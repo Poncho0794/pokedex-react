@@ -1,7 +1,5 @@
 .loading-container {
-  position: absolute;
-  top: 45%;
-  left: 45%;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,5 +28,23 @@
 
   100% {
     transform: rotate(0deg);
+  }
+}
+
+@media (min-width: 720px) {
+  .loading-container {
+    position: absolute;
+    top: 45%;
+    left: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .loading-pokeball {
+    height: 96px;
+    animation: rotation 3s infinite;
+    justify-content: center;
+  
   }
 }

@@ -9,7 +9,7 @@ export default function PokemonPreview() {
     isLoadingDetail,
     pokemonDetail,
   } = usePokemonsStore((state) => state, shallow);
-  const { name, sprites } = pokemonDetail
+  const { sprites } = pokemonDetail
   return (
     <div className="preview-container">
       {isLoadingDetail ? (
