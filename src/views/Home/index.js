@@ -5,23 +5,33 @@ import usePokemonsStore from "../../zustand/stores/pokemon";
 import PokemonList from "./components/PokemonList";
 import PokemonPreview from "./components/PokemonPreview";
 import shallow from "zustand/shallow";
-
+import "./style.css";
 export default function Home() {
-  const { getPokemons, pokemons, isLoading, hasError, errorMessage, getPokemonDetail, pokemonDetail } =
-    usePokemonsStore((state) => state, shallow);
+  const {
+    getPokemons,
+    pokemons,
+    isLoading,
+    isLoadingDetail,
+    hasError,
+    errorMessage,
+    getPokemonDetail,
+    pokemonDetail,
+  } = usePokemonsStore((state) => state, shallow);
   useEffect(() => {
     getPokemons().catch(null);
   }, []);
-  if (isLoading) return <Loading title="Cargando pokemon..." />;
-  console.log(pokemonDetail)
-  return hasError ? (
-    <ErrorMessage message={errorMessage} />
-  ) : (
-    <div style={{display: "flex"}}>
-      <PokemonPreview {...pokemonDetail} />
-      <PokemonList pokemons={pokemons} onPokemonSelect={getPokemonDetail}/>
-      
+  if (hasError) return <ErrorMessage message={errorMessage} />;
+  console.log(pokemonDetail);
+  return (
+    <div className="home-container">
+      {isLoading ? (
+        <Loading title="Cargando pokemon..." />
+      ) : (
+        <>
+          <PokemonPreview {...pokemonDetail} loading={isLoadingDetail}/>
+          <PokemonList pokemons={pokemons} onPokemonSelect={getPokemonDetail} />
+        </>
+      )}
     </div>
-    
   );
 }

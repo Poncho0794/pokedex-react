@@ -1,0 +1,5 @@
+.pokelist-container {
+  max-height: 700px;
+  overflow: scroll;
+  width: 400px;
+}

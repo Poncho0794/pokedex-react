@@ -24,12 +24,12 @@ const usePokemonsStore = create((set, get) => ({
     const proxy = new CacheProxy();
     if (!id) return Promise.reject("Id es requerido");
     try {
-      set({ hasError: false, errorMessage: "", isLoading: true });
+      set({ hasError: false, errorMessage: "", isLoadingDetail: true });
       const pokemonDetail = await proxy.getPokemon(id, apiCall, `https://pokeapi.co/api/v2/pokemon/${id}`)
-      set({ pokemonDetail, isLoading: false });
+      set({ pokemonDetail, isLoadingDetail: false });
     } catch (error) {
       set({
-        isLoading: false,
+        isLoadingDetail: false,
         pokemonDetail: {},
         hasError: true,
         errorMessage: "Algo ha pasado, verifica tu conexion",
