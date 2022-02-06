@@ -11,24 +11,21 @@ export default function Home() {
     getPokemons,
     pokemons,
     isLoading,
-    isLoadingDetail,
     hasError,
     errorMessage,
     getPokemonDetail,
-    pokemonDetail,
   } = usePokemonsStore((state) => state, shallow);
   useEffect(() => {
     getPokemons().catch(null);
   }, []);
   if (hasError) return <ErrorMessage message={errorMessage} />;
-  console.log(pokemonDetail);
   return (
     <div className="home-container">
       {isLoading ? (
         <Loading title="Cargando pokemon..." />
       ) : (
         <>
-          <PokemonPreview {...pokemonDetail} loading={isLoadingDetail}/>
+          <PokemonPreview />
           <PokemonList pokemons={pokemons} onPokemonSelect={getPokemonDetail} />
         </>
       )}

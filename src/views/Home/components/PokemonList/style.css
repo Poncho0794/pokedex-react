@@ -2,4 +2,31 @@
   max-height: 700px;
   overflow: scroll;
   width: 400px;
+  outline: none !important;
+}
+
+
+.pokelist-container::-webkit-scrollbar {
+  display: none;
+}
+
+
+.pokelist_item-container {
+  background-color: antiquewhite;
+  border: 1px solid #ffbf6c;
+  margin: 8px 0 4px 0;
+  padding: 4px;
+}
+
+.pokelist_item-container-active {
+  background-color: #ffbf6c;
+  border: 1px solid #ffbf6c;
+  color: white;
+  margin: 8px 0 4px 0;
+  padding: 4px;
+}
+
+
+.pokelist_item-container > p{
+  margin-top: 0;
 }
